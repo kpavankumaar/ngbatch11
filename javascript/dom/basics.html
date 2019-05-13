@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript" src="customers.js"></script>
+	<script type="text/javascript">
+
+
+		function carpenter(type,design, tellClient){
+			console.log('sofa is made of'+ type + 'and its design is' + design);
+			tellClient('50% completed');
+		};
+		carpenter(' teak wood ',' l-shape ', function(status){
+			console.log(status);
+		});
+	</script>
+	<script type="text/javascript">
+		console.log(data);
+		for(var i = 0 ; i < data.length; i = i + 1){
+			console.log(data[i].firstName +' ' +data[i].lastName);
+			console.log(data[i].orders);
+			// data[i].orders.map(function(obj){
+			// 	console.log(obj);
+			// })
+			var sumOfItemCost = 0 ;
+			for(var j = 0 ; j < data[i].orders.length ; j = j + 1 ){
+				console.log(data[i].orders[j])
+				sumOfItemCost = sumOfItemCost + data[i].orders[j].itemCost;	
+			}
+			console.log('total cost', sumOfItemCost);
+		}
+		
+	</script>
+</body>
+</html>
