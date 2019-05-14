@@ -8,7 +8,7 @@
 			padding:0px;
 		}
 		.cust{
-			width:300px;
+			width:200px;
 			margin:auto;
 			background-color: lightgrey;
 		}
@@ -26,50 +26,48 @@
 	</style>
 </head>
 <body>
-	<div class="cust">
+	<!-- <div class="cust">
 		<h4>Krishna</h4>
 		<table>
-			<tbody>
-				<tr>
-					<th>ProductName</th>
-					<th>ItemCost</th>
-				</tr>
-				<tr>
-					<td>shoes</td>
-					<td>5000</td>
-				</tr>
-				<tr>
-					<td>tv</td>
-					<td>20000</td>
-				</tr>
-			</tbody>
+			<tr>
+				<th>ProductName</th>
+				<th>ItemCost</th>
+			</tr>
+			<tr>
+				<td>shoes</td>
+				<td>5000</td>
+			</tr>
+			<tr>
+				<td>tv</td>
+				<td>20000</td>
+			</tr>
+			
 		</table>
 	</div>
 	<div class="cust">
 		<h4>Krishna</h4>
 		<table>
-			<tbody>
-				<tr>
-					<th>ProductName</th>
-					<th>ItemCost</th>
-				</tr>
-				<tr>
-					<td>shoes</td>
-					<td>5000</td>
-				</tr>
-				<tr>
-					<td>TV</td>
-					<td>20000</td>
-				</tr>
-			</tbody>
+			<tr>
+				<th>ProductName</th>
+				<th>ItemCost</th>
+			</tr>
+			<tr>
+				<td>shoes</td>
+				<td>5000</td>
+			</tr>
+			<tr>
+				<td>TV</td>
+				<td>20000</td>
+			</tr>
+		
 		</table>
 	</div>
 	<div>
 		<!-- customer -->
-		<div>
+		<!-- <div>
 			<h4>Krishna</h4>
 			<!-- products -->
-			<ul>
+			<!-- <ul>
 				<li>productName</li>
 				<li>ItemCost</li>
 			</ul>	
@@ -98,9 +96,37 @@
 				<li>20000</li>
 			</ul>	
 		</div>
-	</div>
+	</div> -->
+	<script type="text/javascript" src="customers.js"></script>
 	<script type="text/javascript">
-		
+		function createCustomer(custObj){
+			// create elements div, h4, table, tr,td 
+			var container = document.createElement('div');
+			var heading  = document.createElement('h4');
+			var tableEl = document.createElement('table');
+			var tableRow = document.createElement('tr');
+			var tableHead1 = document.createElement('th');
+			var tableHead2 = document.createElement('th');
+			
+			container.setAttribute('class','cust');
+			tableHead1.innerText = 'ProductName';
+			tableHead2.innerText = 'ItemCost';
+			tableRow.appendChild(tableHead1);
+			tableRow.appendChild(tableHead2);
+
+			tableEl.appendChild(tableRow);
+
+			heading.innerText = custObj.firstName+ " "+ custObj.lastName;
+			// custObj.orders
+			container.appendChild(heading);
+			container.appendChild(tableEl);
+
+			document.body.appendChild(container);
+		}
+		for(var i =0; i < data.length ; i = i + 1 ){
+			createCustomer(data[i])
+		}
+
 	</script>
 </body>
 </html>
