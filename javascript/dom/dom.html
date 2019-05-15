@@ -117,7 +117,17 @@
 			tableEl.appendChild(tableRow);
 
 			heading.innerText = custObj.firstName+ " "+ custObj.lastName;
-			// custObj.orders
+			for(var j = 0 ; j < custObj.orders.length; j = j + 1){
+				console.log('customer orders');
+				var product = document.createElement('tr');
+				var productName = document.createElement('td');
+				var itemCost = document.createElement('td');
+				productName.innerText = custObj.orders[j].productName;
+				itemCost.innerText = custObj.orders[j].itemCost;
+				product.appendChild(productName);
+				product.appendChild(itemCost);
+				tableEl.appendChild(product);
+			}
 			container.appendChild(heading);
 			container.appendChild(tableEl);
 
