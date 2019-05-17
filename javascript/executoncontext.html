@@ -5,14 +5,27 @@
 </head>
 <body>
 <script type="text/javascript">
+	console.log(a); // undefined
+	var a = 10; 
+	var b = a;
 	console.log(a);
-	var a = 10;
-	c()
-	console.log(a);
-	function c(){
-		console.log('c')
+	// d();
+	// c();
+	var c = function(){
+		console.log(b);// 10
 	}
-	c()
+	function d(){
+		console.log(b); // undefined
+		var b = 15;
+		console.log(b) // 15
+		c();
+	}
+	function e(){
+		d();
+		console.log(b) //10
+
+	}
+	e();
 </script>
 </body>
 </html>
