@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		var obj = [{
+			"name":"ravi"
+		},
+		{
+			"name":"srk"
+		}
+		]
+		var name = 'krishna';
+		var a = 20 ;
+		var b= a ;
+		console.log(b);
+		b = 30;
+		console.log(a);
+		var obj1 = {
+			name: 'krishna'
+		};
+		var obj2 = obj1;
+		console.log(obj2.name);
+		obj2.name = 'radhe';
+		console.log(obj1.name);
+		function test(){
+			console.log('hurray');
+		}
+		test.num = 10;
+		test.num1 = 20;
+		var createdObject = Object.create(obj1);
+
+
+	</script>
+</body>
+</html>
+
