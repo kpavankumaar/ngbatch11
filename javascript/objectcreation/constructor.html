@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<input type="text" name="username" placeholder="Enter Username">
+	<input type="password" name="pwd" placeholder="Enter Password"><br>
+	<button >submit</button>
+	<script type="text/javascript">
+		var btn = document.getElementsByTagName('button')[0];
+		var userName = document.getElementsByName('username')[0];
+		var password = document.getElementsByName('pwd')[0];
+		btn.onclick = loginCredentials;
+
+		function LoginDetails(){
+			console.log(this);
+			this.userName = userName.value;
+			this.password = password.value;
+		}
+
+		function loginCredentials(){
+			var userLoginInfo = new LoginDetails();
+			console.log(userLoginInfo);
+			serviceFn();
+		}
+		function serviceFn(){
+			var url = 'https://jsonplaceholder.typicode.com/posts';
+			var xhr = new XMLHttpRequest();
+			console.log('readyState value',xhr.readyState);
+			xhr.open('GET',url,true);
+			console.log('readyState value',xhr.readyState);
+			xhr.onreadystatechange = function(){
+				console.log(xhr.readyState);
+			}
+		}
+		// var sampleObj = {
+		// 	name: 'srk',
+		// 	testrun: function(){
+		// 		console.log('test the code ', this.name + " "+ this.age);
+		// 		var obj = this;
+		// 		function testFn(){
+		// 			// console.log(this);
+		// 			console.log(obj);
+		// 		}
+		// 		testFn();
+		// 	}
+		// }
+		// sampleObj.age = 25;
+		// sampleObj.testrun()
+
+	</script>
+</body>
+</html>
