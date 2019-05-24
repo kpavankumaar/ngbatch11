@@ -8,6 +8,7 @@
 	<input type="password" name="pwd" placeholder="Enter Password"><br>
 	<button >submit</button>
 	<script type="text/javascript">
+
 		var btn = document.getElementsByTagName('button')[0];
 		var userName = document.getElementsByName('username')[0];
 		var password = document.getElementsByName('pwd')[0];
@@ -22,17 +23,35 @@
 		function loginCredentials(){
 			var userLoginInfo = new LoginDetails();
 			console.log(userLoginInfo);
-			serviceFn();
+			serviceFn(userLoginInfo).then(function(res){
+				console.log(res);
+			});
 		}
-		function serviceFn(){
-			var url = 'https://jsonplaceholder.typicode.com/posts';
-			var xhr = new XMLHttpRequest();
-			console.log('readyState value',xhr.readyState);
-			xhr.open('GET',url,true);
-			console.log('readyState value',xhr.readyState);
-			xhr.onreadystatechange = function(){
-				console.log(xhr.readyState);
-			}
+		function serviceFn(userDetails){
+			return new Promise(function(resolve,reject){
+				var url = 'https://jsonplaceholder.typicode.com/posts';
+				var xhr = new XMLHttpRequest();
+				console.log('readyState value',xhr.readyState);
+				xhr.open('GET',url,true);
+				console.log('readyState value',xhr.readyState);
+				xhr.onreadystatechange = function(){
+					console.log(xhr.readyState);
+					if(xhr.readyState === 4 && xhr.status === 200){
+						resolve(xhr.response);
+						// console.log(typeof xhr.response);
+						// var data = JSON.parse(xhr.response);
+						// for(var i = 0 ; i < data.length; i= i + 1 	){
+						// 	console.log(data[i]);
+						// }
+					}
+				}
+				var stringifiedData = JSON.stringify(userDetails)
+				console.log(typeof stringifiedData)
+				xhr.setRequestHeader('content-type','application/json')
+				// xhr.send(userDetails);
+				xhr.send(null);
+			})
+			
 		}
 		// var sampleObj = {
 		// 	name: 'srk',
