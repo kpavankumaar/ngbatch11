@@ -23,13 +23,27 @@
 		function loginCredentials(){
 			var userLoginInfo = new LoginDetails();
 			console.log(userLoginInfo);
-			serviceFn(userLoginInfo).then(function(res){
+			var url = 'https://jsonplaceholder.typicode.com/posts';
+			serviceFn(url,userLoginInfo).then(function(res){
+				// console.log('resolved value',res);
+				var parsedRes = JSON.parse(res)
+				for(var i = 0 ; i < parsedRes.length ; i = i + 1 ){
+
+					delete parsedRes[i].userId;
+					
+				}
+
+				return parsedRes;
+
+			}).then(function(res){
 				console.log(res);
-			});
+			}).catch(function(err){
+				console.error('incorrect url ', err);
+			})
 		}
-		function serviceFn(userDetails){
+		function serviceFn(url ,userDetails){
 			return new Promise(function(resolve,reject){
-				var url = 'https://jsonplaceholder.typicode.com/posts';
+				
 				var xhr = new XMLHttpRequest();
 				console.log('readyState value',xhr.readyState);
 				xhr.open('GET',url,true);
@@ -43,6 +57,8 @@
 						// for(var i = 0 ; i < data.length; i= i + 1 	){
 						// 	console.log(data[i]);
 						// }
+					}else if( xhr.status >= 400){
+						reject(xhr.status)
 					}
 				}
 				var stringifiedData = JSON.stringify(userDetails)

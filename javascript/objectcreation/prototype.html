@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		function EngineManufacturer(name, engineCapacity, coolingSystem){
+			this.engineBrandName = name;
+			this.engineCapacity = engineCapacity;
+			this.coolingSystem = coolingSystem;
+		}
+		function Transmission(clutch,exhaust){
+			this.clutchType = clutch;
+			this.exhaustType = exhaust;
+		}
+		function Design(){
+
+		}
+		function CustomBikeMaker(engine, clutch,exhaust, design){
+			EngineManufacturer.apply(this,engine);
+			Transmission.call( this,clutch,exhaust)
+			this.design = design;
+		}
+		var myBike = new CustomBikeMaker(['blueCore','600cc','liquid cooling system'],'slipperclutch', 'twin exhaust ')
+	</script>
+</body>
+</html>
