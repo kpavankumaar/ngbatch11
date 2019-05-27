@@ -10,10 +10,15 @@
 			this.engineCapacity = engineCapacity;
 			this.coolingSystem = coolingSystem;
 		}
+
 		function Transmission(clutch,exhaust){
 			this.clutchType = clutch;
 			this.exhaustType = exhaust;
 		}
+		Transmission.prototype.detailsOfTransmission = function(){
+			console.log(this.clutchType, this.exhaustType)
+		}
+
 		function Design(){
 
 		}
@@ -21,8 +26,17 @@
 			EngineManufacturer.apply(this,engine);
 			Transmission.call( this,clutch,exhaust)
 			this.design = design;
+			// this.details = function(){
+			// 	console.log(this.engineBrandName , this.engineCapacity,this.coolingSystem);
+			// }
 		}
-		var myBike = new CustomBikeMaker(['blueCore','600cc','liquid cooling system'],'slipperclutch', 'twin exhaust ')
+		CustomBikeMaker.prototype = Object.create(Transmission.prototype)
+		CustomBikeMaker.prototype.details = function(){
+			console.log(this.engineBrandName , this.engineCapacity,this.coolingSystem);
+		}
+		CustomBikeMaker.prototype.constructor = CustomBikeMaker;
+		var myBike = new CustomBikeMaker(['blueCore','600cc','liquid cooling system'],'slipperclutch', 'twin exhaust');
+		var myBike1 = new CustomBikeMaker(['blueCore','1000cc','oil cooling system'],'slipperclutch', 'single exhaust');
 	</script>
 </body>
 </html>
