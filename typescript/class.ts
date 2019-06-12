@@ -1,5 +1,6 @@
 class Engine{
-    engineType:string;
+    protected name_1 :string;
+    private engineType:string;
     constructor(val, public brand){
         this.engineType = val;
     }
@@ -8,5 +9,24 @@ class Engine{
     }
 }
 var engine = new Engine("v6","fiat");
+engine.enginetype;
+engine.brand
+engine.name;
 console.log(engine.brand);
-console.log(engine.Test());
+console.log(engine.engineType);
+
+class Bike extends Engine{
+    engine:string;
+    transmission:string;
+    exhaust:string;
+    brand 
+    
+    constructor(){
+        super("450cc", "ktm");
+        console.log(this.name_1)
+    }
+}
+
+var tvs = new Bike();
+var pulsar = new Bike();
+tvs.name_1
