@@ -10,7 +10,7 @@ class Engine{
 }
 var engine = new Engine("v6","fiat");
 engine.enginetype;
-engine.brand
+engine.brand;
 engine.name;
 console.log(engine.brand);
 console.log(engine.engineType);
@@ -23,7 +23,7 @@ class Bike extends Engine{
     
     constructor(){
         super("450cc", "ktm");
-        console.log(this.name_1)
+        console.log(this.name_1);
     }
 }
 
