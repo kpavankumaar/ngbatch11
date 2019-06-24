@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { ElementDef } from '@angular/core/src/view';
 
 @Component({
   selector: 'app-root',
@@ -7,5 +8,18 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Angular classes';
-  color = 'grey'
+  color = 'red';
+  data ;
+  testFn(e){
+    this.data  = e;
+    console.log(e);
+
+    // k.pavankumaar@gmail.com
+  }
+  newData;
+  // @Input('testEl') elementFromPage:Element
+
+
+  
+
 }

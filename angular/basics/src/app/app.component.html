@@ -1,1 +1,9 @@
-<h3 [style.color]= "color">Welcome to {{title}} {{ b = 1+2}} </h3> 
+<h3 [style.color]= "color == 'red'? 'grey': 'red'" #testEl>Welcome to {{title}} {{ 1+2}} </h3> 
+<input type="text" [value] = "title" (input)="testFn($event.target.value)">
+<p>{{data}}</p>
+<input type="text" [value] = "title" (keyup)="testFn($event.target.value)">
+<input type="text" [value] = "title" (keyup.enter)="testFn($event.target.value)" (blur) = "testFn($event.target.value)">
+<input type="text" [ngModel] = "data" (ngModelChange) = "testFn($event)">
+<input type="text" [(ngModel)] = "newData">
+{{newData}}
+<app-template-driven-form></app-template-driven-form>
