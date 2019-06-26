@@ -6,10 +6,20 @@
         type="email" 
         class="form-control" 
         id="exampleInputEmail1" 
-        name="Email Address"
-        ngModel
+        name="EmailAddress"
+        ngModel 
+        #emailAddVar = "ngModel"
+        required
+        minlength="3"
+        [ngClass] = "{'is-invalid': loginForm.controls.EmailAddress?.invalid && loginForm.controls.EmailAddress?.touched}"
         placeholder="Enter email">
-      
+      <div class = "invalid-feedback" *ngIf = "loginForm.controls.EmailAddress?.errors?.required">
+        <label>Mandatory Field </label>
+      </div>  
+      <div class = "invalid-feedback" *ngIf = "loginForm.controls.EmailAddress?.invalid">
+        <label for="">Number of characters must be 3 and above </label>
+      </div>
+      {{loginForm.controls.EmailAddress?.invalid}}  {{loginForm.controls.EmailAddress?.touched}}
     </div>
     <div class="form-group">
       <label for="exampleInputPassword1">Password</label>
@@ -18,6 +28,9 @@
         class="form-control"
         name="password"
         ngModel
+        #passwordVar = "ngModel"
+        required
+        [ngClass] = "{'is-invalid': passwordVar.errors?.required }"
         id="exampleInputPassword1" 
         placeholder="Password">
     </div>
@@ -25,6 +38,7 @@
       <input type="checkbox" class="form-check-input" id="exampleCheck1">
       <label class="form-check-label" for="exampleCheck1">Check me out</label>
     </div>
-    <button type="submit" class="btn btn-primary"  >Submit</button>
+    <button type="submit" class="btn btn-primary" [disabled] = "loginForm.invalid" >Submit</button>
+    <button type="submit" class="btn btn-primary" >Submit</button>
   </form>
 </div>
