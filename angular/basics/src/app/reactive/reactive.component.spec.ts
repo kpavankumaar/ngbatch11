@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ReactivecomponentComponent } from './reactivecomponent.component';
+import { ReactiveComponent } from './reactive.component';
 
-describe('ReactivecomponentComponent', () => {
-  let component: ReactivecomponentComponent;
-  let fixture: ComponentFixture<ReactivecomponentComponent>;
+describe('ReactiveComponent', () => {
+  let component: ReactiveComponent;
+  let fixture: ComponentFixture<ReactiveComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ReactivecomponentComponent ]
+      declarations: [ ReactiveComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ReactivecomponentComponent);
+    fixture = TestBed.createComponent(ReactiveComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

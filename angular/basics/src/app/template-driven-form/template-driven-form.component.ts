@@ -14,5 +14,5 @@ export class TemplateDrivenFormComponent implements OnInit {
   methodDetails(val){
     console.log(val);
   }
-
+  
 }
