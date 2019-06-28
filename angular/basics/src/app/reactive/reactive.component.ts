@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-reactive',
@@ -14,7 +14,7 @@ export class ReactiveComponent implements OnInit {
      this.customerInfo = new FormGroup({
        firstName: new FormControl(""),
        phone: new FormControl(""),
-       emailId: new FormControl("")
+       emailId: new FormControl("",[Validators.required,Validators.email])
      });
   }
   testMthd(){
