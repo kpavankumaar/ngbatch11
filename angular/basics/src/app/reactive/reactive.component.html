@@ -2,13 +2,20 @@
   <div class="form-group row">
     <label  class="col-sm-2 col-form-label">FirstName</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control"  placeholder="firstName">
+      <input type="text" 
+      formControlName = "firstName"
+      class="form-control"  
+      placeholder="firstName">
     </div>
   </div>
   <div class="form-group row">
     <label class="col-sm-2 col-form-label">Phone</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control"  placeholder="Phone number">
+      <input type="text" 
+        class="form-control"  
+        formControlName = "phone"
+        [ngClass] = "{'is-invalid': customerInfo.controls.phone?.invalid && customerInfo.controls.phone?.touched}"
+        placeholder="Phone number">
     </div>
   </div>
   <div class="form-group row">
@@ -23,17 +30,31 @@
         class="form-control" 
         id="staticEmail" 
         [ngClass] = "{'is-invalid': customerInfo.controls.emailId?.invalid && customerInfo.controls.emailId?.touched}"
-        placeholder="email">
+        placeholder="email"
+        autocomplete="false"
+        >
         
         <div class="invalid-feedback" *ngIf = "customerInfo.controls.emailId.errors?.required">
           <label > This field is required </label>
         </div>
-        <div class="invalid-feedback" *ngIf = "customerInfo.controls.emailId.errors?.email">
+        <div class="invalid-feedback" *ngIf = "customerInfo.get('emailId').dirty &&  customerInfo.get('emailId').touched">
+          
           <label > Please enter valid email address  </label>
         </div>
         
     </div>
+
   </div>
+  <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Rating</label>
+      <div class="col-sm-10">
+        <input type="text" 
+          class="form-control"  
+          formControlName = "rating"
+          [ngClass] = "{'is-invalid': customerInfo.controls.rating?.invalid && customerInfo.controls.rating?.touched}"
+          placeholder="Rate 1 to 10">
+      </div>
+    </div>
   
   <div class="form-group row">
     <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
