@@ -1,16 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
-
-function ratingFn(e:AbstractControl){
-  var range = e.value;
-  if(range < 0 && range > 10){
-   return  {
-      'watch':true
+function ratingFn(min:number, max:number){
+  return function (e:AbstractControl):{[key:string]:boolean} | Boolean {
+    var range = e.value;
+    console.log(range);
+    if(range <= min || range > max){
+    return  {
+        'watch':true
+      }
     }
+    return false;
   }
-  return false;
 }
-
 
 @Component({
   selector: 'app-reactive',
@@ -24,11 +25,13 @@ export class ReactiveComponent implements OnInit {
   customerInfo;
   ngOnInit() {
      this.customerInfo = new FormGroup({
-       firstName: new FormControl(""),
+       firstName: new FormControl("Krishna"),
+       notify: new FormControl(""),
        phone: new FormControl("",[Validators.required,Validators.maxLength(10),Validators.minLength(10)]),
        emailId: new FormControl("",[Validators.required,Validators.email]),
+
       //  rating:new FormControl("",[Validators.required,Validators.max(10),Validators.min(1)])
-      rating:new FormControl("",[Validators.required, ratingFn])
+      rating:new FormControl("",[Validators.required, ratingFn(1,5)])
      });
   }
   testMthd(){
