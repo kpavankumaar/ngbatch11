@@ -27,8 +27,8 @@ export class ReactiveComponent implements OnInit {
      this.customerInfo = new FormGroup({
        firstName: new FormControl("Krishna"),
        notify: new FormControl(""),
-       phone: new FormControl("",[Validators.required,Validators.maxLength(10),Validators.minLength(10)]),
-       emailId: new FormControl("",[Validators.required,Validators.email]),
+       phone: new FormControl("",[Validators.maxLength(10),Validators.minLength(10)]),
+       emailId: new FormControl("",[Validators.required, Validators.email]),
 
       //  rating:new FormControl("",[Validators.required,Validators.max(10),Validators.min(1)])
       rating:new FormControl("",[Validators.required, ratingFn(1,5)])
@@ -36,6 +36,25 @@ export class ReactiveComponent implements OnInit {
   }
   testMthd(){
     console.log(this.customerInfo);
+  }
+  chooseEmailOrPhoneNotification(){
+    var notifiedVal = this.customerInfo.get('notify');
+    var phone = this.customerInfo.get("phone");
+    var email = this.customerInfo.get("emailId");
+    setTimeout(function(){
+      console.log(notifiedVal.value);
+      if(notifiedVal.value === "phone"){
+        phone.setValidators(Validators.required);
+        email.clearValidators();
+      }else{
+        email.setValidators([Validators.required,Validators.email])
+        phone.clearValidators();
+      }
+      phone.updateValueAndValidity();
+      email.updateValueAndValidity();
+    },0)
+    
+    
   }
 
 }
