@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { ElementDef } from '@angular/core/src/view';
 
 @Component({
@@ -6,19 +6,26 @@ import { ElementDef } from '@angular/core/src/view';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnChanges {
   title = 'Angular classes';
   color = 'red';
-  data ;
-  testFn(e){
+  data: any ;
+  sharedData = [1,2,3,4]
+  testFn(e: any){
     this.data  = e;
     console.log(e);
 
     // k.pavankumaar@gmail.com
   }
-  newData;
-  // @Input('testEl') elementFromPage:Element
+  newData: any;
 
+  // @Input('testEl') elementFromPage:Element
+  constructor(){
+    console.log("app component constructor");
+  }
+  ngOnChanges(){
+    console.log("app component ngOnchanges")
+  }
 
   
 

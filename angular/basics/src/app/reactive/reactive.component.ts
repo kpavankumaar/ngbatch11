@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 function ratingFn(min:number, max:number){
   return function (e:AbstractControl):{[key:string]:boolean} | Boolean {
@@ -19,10 +19,15 @@ function ratingFn(min:number, max:number){
   styleUrls: ['./reactive.component.css']
 })
 
-export class ReactiveComponent implements OnInit {
-
-  constructor() { }
+export class ReactiveComponent implements OnInit,OnChanges {
+  @Input() customData;
+  constructor() { 
+    console.log("reactive component constructor");
+  }
   customerInfo;
+  ngOnChanges(){
+    console.log("on changes in reactivecomponent");
+  }
   ngOnInit() {
      this.customerInfo = new FormGroup({
        firstName: new FormControl("Krishna"),
@@ -31,7 +36,13 @@ export class ReactiveComponent implements OnInit {
        emailId: new FormControl("",[Validators.required, Validators.email]),
 
       //  rating:new FormControl("",[Validators.required,Validators.max(10),Validators.min(1)])
-      rating:new FormControl("",[Validators.required, ratingFn(1,5)])
+      rating:new FormControl("",[Validators.required, ratingFn(1,5)]),
+      address:new FormGroup({
+        houseno: new FormControl(),
+        street: new FormControl(),
+        city: new FormControl(),
+        state: new FormControl(),
+      })
      });
   }
   testMthd(){
