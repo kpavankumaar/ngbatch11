@@ -21,14 +21,17 @@ function ratingFn(min:number, max:number){
 
 export class ReactiveComponent implements OnInit,OnChanges {
   @Input() customData;
+  name = "krishna";
   constructor() { 
     console.log("reactive component constructor");
   }
   customerInfo;
   ngOnChanges(){
-    console.log("on changes in reactivecomponent");
+    console.log("onChanges in reactivecomponent");
+   
   }
   ngOnInit() {
+    console.log("onInit in reactivecomponent");
      this.customerInfo = new FormGroup({
        firstName: new FormControl("Krishna"),
        notify: new FormControl(""),
@@ -45,8 +48,19 @@ export class ReactiveComponent implements OnInit,OnChanges {
       })
      });
   }
+
+  ngDoCheck(){
+    console.log("ngDoCheck in reactiveComponent");
+    
+  }
+  ngAfterContentInit(){
+    console.log("ngAfterContentInit in Reactive component")
+  }
   testMthd(){
     console.log(this.customerInfo);
+  }
+  change(){
+    this.name = "radhe krishna"
   }
   chooseEmailOrPhoneNotification(){
     var notifiedVal = this.customerInfo.get('notify');

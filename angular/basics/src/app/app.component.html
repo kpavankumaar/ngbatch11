@@ -5,6 +5,11 @@
 <input type="text" [value] = "title" (keyup.enter)="testFn($event.target.value)" (blur) = "testFn($event.target.value)">
 <input type="text" [ngModel] = "data" (ngModelChange) = "testFn($event)">
 <input type="text" [(ngModel)] = "newData">
+<a routerLink = "reactive">Reactive </a>   
+<a routerLink = "sample"> sample </a>
 {{newData}}
+<button (click) = "updataTheDataBoundProp()">click me </button>
 <!-- <app-template-driven-form></app-template-driven-form> -->
-<app-reactive [customData] = "sharedData"></app-reactive>
+<!-- <app-reactive [customData] = "sharedData"></app-reactive> -->
+<!-- <app-sample></app-sample> -->
+<router-outlet></router-outlet>
