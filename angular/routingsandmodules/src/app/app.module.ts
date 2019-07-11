@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { CustomersModule } from './customers/customers.module';
+import { appRoutingModule } from './approutingmodule';
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import { CustomersModule } from './customers/customers.module';
   ],
   imports: [
     BrowserModule,
-    CustomersModule
+    CustomersModule,
+    appRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
