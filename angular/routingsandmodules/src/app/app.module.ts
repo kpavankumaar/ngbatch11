@@ -13,7 +13,7 @@ import { appRoutingModule } from './approutingmodule';
   ],
   imports: [
     BrowserModule,
-    CustomersModule,
+    
     appRoutingModule
   ],
   providers: [],

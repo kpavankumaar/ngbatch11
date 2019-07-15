@@ -3,13 +3,9 @@ import { CommonModule } from '@angular/common';
 import { CustomersComponent } from './customers.component';
 import { CustomerscardComponent } from './customerscard.component';
 import { CustomersgridComponent } from './customersgrid.component';
-import { OrdersModule } from '../orders/orders.module';
-
-
 @NgModule({
   imports: [
-    CommonModule,
-    OrdersModule
+    CommonModule
   ],
   exports:[CustomersComponent],
   declarations: [CustomersComponent, CustomerscardComponent, CustomersgridComponent]
