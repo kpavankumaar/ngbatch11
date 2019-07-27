@@ -8,12 +8,13 @@ import { DataService } from '../core/services/data.service';
   
 })
 export class CustomersComponent {
-
+  customersData;
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
     this.dataService.getCustomersData().subscribe((data) => {
       console.log(data);
+      this.customersData = data;
     });
   }
 

@@ -4,6 +4,7 @@ const route:Routes = [
     {path:"",redirectTo:"customers",pathMatch:"full"},
     {path:"customers",loadChildren:"./customers/customers.module#CustomersModule"},
     {path:"orders",loadChildren:"./orders/orders.module#OrdersModule"},
+    {path:"customers/:id",loadChildren:"./customer/customer.module#CustomerModule"},
     {path:"**",redirectTo:"customers",pathMatch:"full"},
 ]
 
