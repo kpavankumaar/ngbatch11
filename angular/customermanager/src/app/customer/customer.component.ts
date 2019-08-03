@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../core/services/data.service';
+import { ActivatedRouteSnapshot, RouterState, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-customer',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CustomerComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dataService:DataService,private router:ActivatedRoute) {
 
+  }
+  customerdata;
   ngOnInit() {
+    console.log(this.router);
+    var id = this.router.snapshot.params.id;
+    this.dataService.getCustomerDataById(id).subscribe(function (data){
+      this.customerData = data;
+      console.log(this.customerData);
+    })
   }
 
 }

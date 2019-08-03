@@ -6,7 +6,7 @@ import { ICustomers } from "../../shared/interfaces";
 
 @Injectable()
 export class DataService{
-    url = "api/customers";
+    url = "api/customers/";
     constructor(private http:HttpClient){
 
     }
@@ -14,6 +14,15 @@ export class DataService{
         console.log("Data service");
         return this.http.get<ICustomers[]>(this.url).pipe(
             map((data) => {
+                return data;
+            })
+        )
+    }
+    getCustomerDataById(id):Observable<ICustomers[]>{
+        console.log("Data service");
+        return this.http.get<ICustomers[]>(this.url+id).pipe(
+            map((data) => {
+                console.log("data",data);
                 return data;
             })
         )
