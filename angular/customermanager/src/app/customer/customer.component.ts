@@ -7,7 +7,7 @@ import { ActivatedRouteSnapshot, RouterState, ActivatedRoute } from '@angular/ro
   templateUrl: './customer.component.html',
   styleUrls: ['./customer.component.css']
 })
-export class CustomerComponent implements OnInit {
+export class CustomerComponent {
 
   constructor(private dataService:DataService,private router:ActivatedRoute) {
 
@@ -16,9 +16,10 @@ export class CustomerComponent implements OnInit {
   ngOnInit() {
     console.log(this.router);
     var id = this.router.snapshot.params.id;
+    console.log("id value ", id);
     this.dataService.getCustomerDataById(id).subscribe(function (data){
       this.customerData = data;
-      console.log(this.customerData);
+      console.log("customerdata", this.customerData);
     })
   }
 
